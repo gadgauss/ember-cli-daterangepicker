@@ -92,7 +92,7 @@ export default Ember.Component.extend({
       linkedCalendars: this.get('linkedCalendars')
     };
 
-    if (this.get('singleDatePicker') === undefined) {
+    if (this.get('singleDatePicker') === false) {
       options.ranges = this.get('ranges');
     }
 
