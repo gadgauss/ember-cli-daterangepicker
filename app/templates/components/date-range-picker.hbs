@@ -1,6 +1,9 @@
-<label>{{context.label}}</label>
-{{input value=context.rangeText class='daterangepicker-input form-control pull-right' placeholder=context.placeholder}}
+{{!<label>{{context.label} }</label>
+{{log context}}
+<p><span class='daterangepicker-input'>{{ context.rangeText }}</span> <i class="cico cico-arrow2-down"></i></p>
+{{!input value=context.rangeText class='daterangepicker-input form-control' placeholder=context.placeholder} }
 <div class="hide">
-  {{input value=context.start}}
-  {{input value=context.end}}
+  {{input value=context.start} }
+  {{input value=context.end} }
 </div>
+}}

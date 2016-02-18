@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import moment from 'moment';
+//import moment from 'moment';
 
 export default Ember.Component.extend({
   classNames: ['form-group'],
@@ -13,7 +13,7 @@ export default Ember.Component.extend({
   timePickerSeconds: false,
   timePickerIncrement: undefined,
   showWeekNumbers: false,
-  showDropdowns: false,
+  showDropdowns: true,
   linkedCalendars: false,
 
   format: 'MMM D, YYYY',
@@ -28,7 +28,7 @@ export default Ember.Component.extend({
     }
     return '';
   }),
-  opens: null,
+  opens: "center",
   drops: null,
   separator: ' - ',
   singleDatePicker: false,
@@ -45,11 +45,15 @@ export default Ember.Component.extend({
     'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
   },
   removeDropdownOnDestroy: false,
-  cancelLabel: 'Cancel',
   applyAction: null,
   cancelAction: null,
-  autoUpdateInput: true,
+  autoUpdateInput: false,
   autoApply: false,
+  templates: {
+    arrowLeft: '<i class="cico cico-arrow-left"></i>',
+    arrowRight: '<i class="cico cico-arrow-right"></i>',
+  },
+  locale: {},
 
   //Init the dropdown when the component is added to the DOM
   didInsertElement: function() {
@@ -68,10 +72,11 @@ export default Ember.Component.extend({
     let options = {
       autoUpdateInput: this.get('autoUpdateInput'),
       autoApply: this.get('autoApply'),
-      locale: {
-        cancelLabel: this.get('cancelLabel'),
-        format: this.get('format')
-      },
+      locale: $.extend({
+        cancelLabel: 'Cancel',
+        separator: this.get("separator"),
+        format: this.get('format'),
+      }, this.get("locale")),
       startDate: startDate,
       endDate: endDate,
       minDate: minDate,
@@ -89,7 +94,8 @@ export default Ember.Component.extend({
       timePickerIncrement: this.get('timePickerIncrement'),
       showWeekNumbers: this.get('showWeekNumbers'),
       showDropdowns: this.get('showDropdowns'),
-      linkedCalendars: this.get('linkedCalendars')
+      linkedCalendars: this.get('linkedCalendars'),
+      templates: this.get("templates")
     };
 
     if (this.get('singleDatePicker') === false) {
