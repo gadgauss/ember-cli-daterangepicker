@@ -32,7 +32,10 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "ember-moment": "^3.5.0",
-    "ember-try": "0.0.6"
+    "ember-try": "0.0.6",
+    "moment": ">= 2.8.0",
+    "moment-timezone": ">= 0.1.0",
+    "bootstrap-daterangepicker": "martinadamec/bootstrap-daterangepicker#master",
   },
   "keywords": [
     "ember-addon"
