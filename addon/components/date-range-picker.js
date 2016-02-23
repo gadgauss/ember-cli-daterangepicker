@@ -114,9 +114,15 @@ export default Ember.Component.extend({
 
 
     /**
-     * Init the dropdown when the component is added to the DOM
+     * Init of datepicker
+     * @return {[type]} [description]
      */
-    didInsertElement: function() {
+    datepickerInit: function()
+    {
+        if ( !this.get('start') || !this.get('end') )
+        {
+            return;
+        }
         var self = this;
         var momentStartDate = moment(this.get('start'), this.get('serverFormat')),
             momentEndDate = moment(this.get('end'), this.get('serverFormat')),
@@ -202,6 +208,15 @@ export default Ember.Component.extend({
                 self.set('end', self.get('end'));
             }
         });
+
+    }.observes("start", "end"),
+
+
+    /**
+     * Init the dropdown when the component is added to the DOM
+     */
+    didInsertElement: function() {
+        this.datepickerInit();
     },
 
     //Remove the hidden dropdown when this component is destroyed
