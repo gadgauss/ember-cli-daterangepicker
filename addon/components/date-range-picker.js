@@ -48,7 +48,14 @@ export default Ember.Component.extend({
     separator: ' - ',
 
     // Mask for output
-    mask: "from {0} to {1}",
+    //mask: "from {0} to {1}",
+    mask: Ember.computed(function(){
+        let mask = this.get('i18n').t('date-range-picker.from');
+        mask += " {0} ";
+        mask += this.get('i18n').t('date-range-picker.to');
+        mask += " {1}";
+        return mask;
+    });
 
     // Show only a single calendar to choose one date, instead of a range picker with two calendars; 
     // the start and end dates provided to your callback will be the same single date chosen
@@ -140,7 +147,11 @@ export default Ember.Component.extend({
             autoUpdateInput: this.get('autoUpdateInput'),
             autoApply: this.get('autoApply'),
             locale: $.extend({
-                    cancelLabel: 'Cancel',
+                    cancelLabel: this.get('i18n').t('date-range-picker.cancel'),
+                    applyLabel: this.get('i18n').t('date-range-picker.apply'),
+                    customRangeLabel: this.get('i18n').t('date-range-picker.custom-range'),
+                    fromLabel: this.get('i18n').t('date-range-picker.start-date'),
+                    toLabel: this.get('i18n').t('date-range-picker.end-date'),
                     separator: this.get("separator"),
                     format: this.get('format'),
                     firstDay: moment.localeData().firstDayOfWeek(),
@@ -243,22 +254,22 @@ export default Ember.Component.extend({
                     r[this.get('i18n').t('date-range-picker.today')] = [moment(), moment()];
                     break;
                 case "yesterday":
-                    r["Yesterday"] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
+                    r[this.get('i18n').t('date-range-picker.yesterday')] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
                     break;
                 case "last-7":
-                    r["Last 7 Days"] = [moment().subtract(6, 'days'), moment()];
+                    r[this.get('i18n').t('date-range-picker.last-seven')] = [moment().subtract(6, 'days'), moment()];
                     break;
                 case "last-week":
-                    r["Last week (Mo-Su)"] = [moment().subtract(1, 'week').startOf("week"), moment().subtract(1, 'week').endOf("week")];
+                    r[this.get('i18n').t('date-range-picker.last-week')] = [moment().subtract(1, 'week').startOf("week"), moment().subtract(1, 'week').endOf("week")];
                     break;
                 case "month-this":
-                    r["Month to Date"] = [moment().startOf("month"), moment()];
+                    r[this.get('i18n').t('date-range-picker.this-month')] = [moment().startOf("month"), moment()];
                     break;
                 case "month-last":
-                    r["Previous Month"] = [moment().subtract(1, 'month').startOf("month"), moment().subtract(1, 'month').endOf("month")];
+                    r[this.get('i18n').t('date-range-picker.last-month')] = [moment().subtract(1, 'month').startOf("month"), moment().subtract(1, 'month').endOf("month")];
                     break;
                 case "year-this":
-                    r["Year to Date"] = [moment().startOf("year"), moment()];
+                    r[this.get('i18n').t('date-range-picker.this-year')] = [moment().startOf("year"), moment()];
                     break;
                 default:
                     Ember.Logger.error("Daterange picker range '" + ranges[i] + "' are not set.");

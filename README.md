@@ -25,6 +25,8 @@ Install [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-dat
 
 ## Contributing
 
+please contribute to the original project
+
 1. [Fork it](https://github.com/josemarluedke/ember-cli-daterangepicker/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
