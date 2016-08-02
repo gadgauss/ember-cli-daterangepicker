@@ -50,11 +50,7 @@ export default Ember.Component.extend({
     // Mask for output
     //mask: "from {0} to {1}",
     mask: Ember.computed(function(){
-        let mask = this.get('i18n').t('date-range-picker.from');
-        mask += " {0} ";
-        mask += this.get('i18n').t('date-range-picker.to');
-        mask += " {1}";
-        return mask;
+        return this.get('i18n').t('date-range-picker.from') + " {0} " + this.get('i18n').t('date-range-picker.to') + " {1}";
     });
 
     // Show only a single calendar to choose one date, instead of a range picker with two calendars; 
