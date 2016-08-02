@@ -1,3 +1,7 @@
+# This fork
+
+this fork was made for localising the datepicker so if you are not using ember-i18n this will deffinitely not work for you and even if you are, you would have to add the strings to your locales files
+
 # Ember CLI daterangepicker
 
 Just a simple component to use [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker).

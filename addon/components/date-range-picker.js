@@ -5,6 +5,8 @@ import Ember from 'ember';
  * @author Martin Adamec (adamec@cognito.cz)
  */
 export default Ember.Component.extend({
+    //localisation service
+    i18n:Ember.inject.service(), 
     // class names for container
     classNames: ['form-group'],
     // Container bindings attr
@@ -104,8 +106,8 @@ export default Ember.Component.extend({
 
     // Templates for some parts of picker
     templates: {
-        arrowLeft: '<i class="cico cico-arrow-left"></i><i class="fa fa-bomb" aria-hidden="true"></i>',
-        arrowRight: '<i class="cico cico-arrow-right"></i><i class="fa fa-bomb" aria-hidden="true"></i>',
+        arrowLeft: '<i class="cico cico-arrow-left"></i>',
+        arrowRight: '<i class="cico cico-arrow-right"></i>',
     },
 
     // Date locale options
@@ -238,7 +240,7 @@ export default Ember.Component.extend({
         {
             switch ( ranges[i] ) {
                 case "today":
-                    r["Today"] = [moment(), moment()];
+                    r[this.get('i18n').t('date-range-picker.today')] = [moment(), moment()];
                     break;
                 case "yesterday":
                     r["Yesterday"] = [moment().subtract(1, 'days'), moment().subtract(1, 'days')];
