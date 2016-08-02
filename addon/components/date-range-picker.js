@@ -104,8 +104,8 @@ export default Ember.Component.extend({
 
     // Templates for some parts of picker
     templates: {
-        arrowLeft: '<i class="cico cico-arrow-left"></i>',
-        arrowRight: '<i class="cico cico-arrow-right"></i>',
+        arrowLeft: '<i class="cico cico-arrow-left"></i><i class="fa fa-bomb" aria-hidden="true"></i>',
+        arrowRight: '<i class="cico cico-arrow-right"></i><i class="fa fa-bomb" aria-hidden="true"></i>',
     },
 
     // Date locale options
